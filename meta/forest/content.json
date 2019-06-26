@@ -1,0 +1,15 @@
+{
+    "info": {
+        "product_identifier": "de.pageler.christoph.aerialtv2.forest"
+    },
+    "videos": [
+        {
+            "title": "An aerial view of coniferous trees",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/forest/forest-1-hd.mp4",
+            "duration": 24,
+            "fps": 23,
+            "resolution": "fullhd",
+            "author": "Ruvim Miksanskiy"
+        }
+    ]
+}

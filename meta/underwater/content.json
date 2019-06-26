@@ -1,0 +1,39 @@
+{
+    "info": {
+        "product_identifier": "de.pageler.christoph.aerialtv2.underwater"
+    },
+    "videos": [
+        {
+            "title": "Variety of fishes",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/underwater/underwater-1-hd.mp4",
+            "duration": 24,
+            "fps": 23,
+            "resolution": "fullhd",
+            "author": "Ruvim Miksanskiy"
+        },
+        {
+            "title": "Variety of fishes",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/underwater/underwater-2-sd.mp4",
+            "duration": 104,
+            "fps": 29,
+            "resolution": "hd",
+            "author": "Free Videos"
+        },
+        {
+            "title": "Exotic fishes",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/underwater/underwater-3-hd.mp4",
+            "duration": 17,
+            "fps": 29,
+            "resolution": "fullhd",
+            "author": "Tom Fisk"
+        },
+        {
+            "title": "A turquoise in the deep sea",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/underwater/underwater-4-hd.mp4",
+            "duration": 152,
+            "fps": 29,
+            "resolution": "fullhd",
+            "author": "Tom Fisk"
+        }
+    ]
+}
