@@ -12,21 +12,26 @@ import Foundation
 
 public class AerialCache {
 
-    public static var categories: [AerialAPI.Category]?
+    public static var categories: [AerialAPI.Category]? {
+        get {
+            return cachedCategories ?? categoriesFromFile()
+        }
+        set {
+            cachedCategories = newValue
+        }
+    }
+    private static var cachedCategories: [AerialAPI.Category]?
 
     private static var cacheURL: URL {
         return URL(fileURLWithPath: NSTemporaryDirectory().appending("categories.cache"))
     }
 
-    public static func update() {
-        // load cache from file
-        if let data = try? Data(contentsOf: cacheURL) {
-            if let categories = try? JSONDecoder().decode([AerialAPI.Category].self, from: data) {
-                self.categories = categories
-            }
-        }
+    private static func categoriesFromFile() -> [AerialAPI.Category]? {
+        guard let data = try? Data(contentsOf: cacheURL) else { return nil }
+        return try? JSONDecoder().decode([AerialAPI.Category].self, from: data)
+    }
 
-        // refresh cache
+    public static func update() {
         let api = AerialAPI()
         api.getCategoriesFromContent { categories in
             guard let categories = categories else { return }

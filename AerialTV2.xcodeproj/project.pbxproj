@@ -7,8 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5955C69A22C3A197002C1DB4 /* ScreensaverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C69922C3A197002C1DB4 /* ScreensaverVC.swift */; };
+		5955C69D22C3A299002C1DB4 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5955C69B22C3A299002C1DB4 /* AVKit.framework */; };
+		5955C69E22C3A299002C1DB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5955C69C22C3A299002C1DB4 /* AVFoundation.framework */; };
+		5955C6A022C3A2BD002C1DB4 /* Screensaver.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5955C69F22C3A2BD002C1DB4 /* Screensaver.storyboard */; };
+		5955C6A322C3A632002C1DB4 /* AerialTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6A222C3A632002C1DB4 /* AerialTabBarController.swift */; };
+		5955C6A622C3A6C4002C1DB4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5955C6A522C3A6C4002C1DB4 /* Settings.storyboard */; };
+		5955C6A822C3A793002C1DB4 /* TVUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5955C6A722C3A793002C1DB4 /* TVUIKit.framework */; };
+		5955C6AA22C3AE13002C1DB4 /* AerialQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6A922C3AE13002C1DB4 /* AerialQueue.swift */; };
+		5955C6B022C3B5E9002C1DB4 /* HiddenFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6AF22C3B5E9002C1DB4 /* HiddenFocusView.swift */; };
+		5955C6B222C3BE98002C1DB4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6B122C3BE98002C1DB4 /* Collection.swift */; };
+		5955C6B522C3CA9C002C1DB4 /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5955C6B422C3CA9C002C1DB4 /* Categories.storyboard */; };
+		5955C6B722C3CAAA002C1DB4 /* CategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6B622C3CAAA002C1DB4 /* CategoriesVC.swift */; };
+		5955C6B922C3CC61002C1DB4 /* AerialProductMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6B822C3CC61002C1DB4 /* AerialProductMapper.swift */; };
+		5955C6BB22C3D41F002C1DB4 /* AerialSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BA22C3D41F002C1DB4 /* AerialSettings.swift */; };
+		5955C6BD22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BC22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift */; };
+		5955C6BF22C3DBD5002C1DB4 /* AerialImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */; };
 		59C479DE22C123A000DF0BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C479DD22C123A000DF0BA2 /* AppDelegate.swift */; };
-		59C479E022C123A000DF0BA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C479DF22C123A000DF0BA2 /* ViewController.swift */; };
 		59C479E322C123A000DF0BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C479E122C123A000DF0BA2 /* Main.storyboard */; };
 		59C479E522C123A200DF0BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C479E422C123A200DF0BA2 /* Assets.xcassets */; };
 		59C479EF22C12BF900DF0BA2 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C479EE22C12BF900DF0BA2 /* SwiftyStoreKit.framework */; };
@@ -19,9 +34,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5955C69922C3A197002C1DB4 /* ScreensaverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreensaverVC.swift; sourceTree = "<group>"; };
+		5955C69B22C3A299002C1DB4 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		5955C69C22C3A299002C1DB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5955C69F22C3A2BD002C1DB4 /* Screensaver.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Screensaver.storyboard; sourceTree = "<group>"; };
+		5955C6A222C3A632002C1DB4 /* AerialTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialTabBarController.swift; sourceTree = "<group>"; };
+		5955C6A522C3A6C4002C1DB4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		5955C6A722C3A793002C1DB4 /* TVUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVUIKit.framework; path = System/Library/Frameworks/TVUIKit.framework; sourceTree = SDKROOT; };
+		5955C6A922C3AE13002C1DB4 /* AerialQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialQueue.swift; sourceTree = "<group>"; };
+		5955C6AF22C3B5E9002C1DB4 /* HiddenFocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenFocusView.swift; sourceTree = "<group>"; };
+		5955C6B122C3BE98002C1DB4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		5955C6B422C3CA9C002C1DB4 /* Categories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
+		5955C6B622C3CAAA002C1DB4 /* CategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVC.swift; sourceTree = "<group>"; };
+		5955C6B822C3CC61002C1DB4 /* AerialProductMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialProductMapper.swift; sourceTree = "<group>"; };
+		5955C6BA22C3D41F002C1DB4 /* AerialSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialSettings.swift; sourceTree = "<group>"; };
+		5955C6BC22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPosterCollectionViewCell.swift; sourceTree = "<group>"; };
+		5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialImageProvider.swift; sourceTree = "<group>"; };
 		59C479DA22C123A000DF0BA2 /* AerialTV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialTV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C479DD22C123A000DF0BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		59C479DF22C123A000DF0BA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		59C479E222C123A000DF0BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		59C479E422C123A200DF0BA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59C479E622C123A200DF0BA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5955C6A822C3A793002C1DB4 /* TVUIKit.framework in Frameworks */,
+				5955C69D22C3A299002C1DB4 /* AVKit.framework in Frameworks */,
+				5955C69E22C3A299002C1DB4 /* AVFoundation.framework in Frameworks */,
 				59C479EF22C12BF900DF0BA2 /* SwiftyStoreKit.framework in Frameworks */,
 				59C479F922C1FE0300DF0BA2 /* StoreKit.framework in Frameworks */,
 			);
@@ -45,6 +78,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5955C69722C3A181002C1DB4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				5955C6A222C3A632002C1DB4 /* AerialTabBarController.swift */,
+				5955C69822C3A18A002C1DB4 /* Screensaver */,
+				5955C6B322C3CA76002C1DB4 /* Categories */,
+				5955C6A422C3A6B8002C1DB4 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		5955C69822C3A18A002C1DB4 /* Screensaver */ = {
+			isa = PBXGroup;
+			children = (
+				5955C69F22C3A2BD002C1DB4 /* Screensaver.storyboard */,
+				5955C69922C3A197002C1DB4 /* ScreensaverVC.swift */,
+			);
+			path = Screensaver;
+			sourceTree = "<group>";
+		};
+		5955C6A422C3A6B8002C1DB4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5955C6A522C3A6C4002C1DB4 /* Settings.storyboard */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		5955C6B322C3CA76002C1DB4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5955C6B422C3CA9C002C1DB4 /* Categories.storyboard */,
+				5955C6B622C3CAAA002C1DB4 /* CategoriesVC.swift */,
+				5955C6BC22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		59C479D122C123A000DF0BA2 = {
 			isa = PBXGroup;
 			children = (
@@ -66,13 +137,19 @@
 			isa = PBXGroup;
 			children = (
 				59C479DD22C123A000DF0BA2 /* AppDelegate.swift */,
-				59C479DF22C123A000DF0BA2 /* ViewController.swift */,
+				5955C6AF22C3B5E9002C1DB4 /* HiddenFocusView.swift */,
+				5955C6B122C3BE98002C1DB4 /* Collection.swift */,
+				5955C69722C3A181002C1DB4 /* Features */,
 				59C479E122C123A000DF0BA2 /* Main.storyboard */,
 				59C479E422C123A200DF0BA2 /* Assets.xcassets */,
 				59C479E622C123A200DF0BA2 /* Info.plist */,
 				59C479F222C12DB100DF0BA2 /* AerialAPI.swift */,
 				59C479F422C1E47A00DF0BA2 /* AerialCache.swift */,
 				59C479F622C1E9F100DF0BA2 /* AerialAppStoreIAP.swift */,
+				5955C6A922C3AE13002C1DB4 /* AerialQueue.swift */,
+				5955C6B822C3CC61002C1DB4 /* AerialProductMapper.swift */,
+				5955C6BA22C3D41F002C1DB4 /* AerialSettings.swift */,
+				5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */,
 			);
 			path = AerialTV2;
 			sourceTree = "<group>";
@@ -80,6 +157,9 @@
 		59C479ED22C12BF900DF0BA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5955C6A722C3A793002C1DB4 /* TVUIKit.framework */,
+				5955C69C22C3A299002C1DB4 /* AVFoundation.framework */,
+				5955C69B22C3A299002C1DB4 /* AVKit.framework */,
 				59C479F822C1FE0300DF0BA2 /* StoreKit.framework */,
 				59C479EE22C12BF900DF0BA2 /* SwiftyStoreKit.framework */,
 			);
@@ -150,8 +230,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5955C6B522C3CA9C002C1DB4 /* Categories.storyboard in Resources */,
 				59C479E522C123A200DF0BA2 /* Assets.xcassets in Resources */,
 				59C479E322C123A000DF0BA2 /* Main.storyboard in Resources */,
+				5955C6A022C3A2BD002C1DB4 /* Screensaver.storyboard in Resources */,
+				5955C6A622C3A6C4002C1DB4 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,11 +268,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5955C6B222C3BE98002C1DB4 /* Collection.swift in Sources */,
+				5955C6B922C3CC61002C1DB4 /* AerialProductMapper.swift in Sources */,
+				5955C6BB22C3D41F002C1DB4 /* AerialSettings.swift in Sources */,
 				59C479F722C1E9F100DF0BA2 /* AerialAppStoreIAP.swift in Sources */,
-				59C479E022C123A000DF0BA2 /* ViewController.swift in Sources */,
 				59C479DE22C123A000DF0BA2 /* AppDelegate.swift in Sources */,
+				5955C6AA22C3AE13002C1DB4 /* AerialQueue.swift in Sources */,
+				5955C6B722C3CAAA002C1DB4 /* CategoriesVC.swift in Sources */,
+				5955C69A22C3A197002C1DB4 /* ScreensaverVC.swift in Sources */,
+				5955C6BF22C3DBD5002C1DB4 /* AerialImageProvider.swift in Sources */,
+				5955C6BD22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift in Sources */,
 				59C479F522C1E47A00DF0BA2 /* AerialCache.swift in Sources */,
 				59C479F322C12DB100DF0BA2 /* AerialAPI.swift in Sources */,
+				5955C6A322C3A632002C1DB4 /* AerialTabBarController.swift in Sources */,
+				5955C6B022C3B5E9002C1DB4 /* HiddenFocusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

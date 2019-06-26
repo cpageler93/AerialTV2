@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Screensaver-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ScreensaverVC" customModule="AerialTV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="csh-yS-hKo">
+                                <rect key="frame" x="928" y="508" width="64" height="64"/>
+                            </activityIndicatorView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pj-2G-tn2">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <connections>
+                                    <segue destination="gwz-LA-GHG" kind="embed" identifier="embeddedAVPlayerViewController1" id="YJB-y4-tCD"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YeP-EL-6c2">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <connections>
+                                    <segue destination="vrX-mG-MSG" kind="embed" identifier="embeddedAVPlayerViewController2" id="tmL-rM-Fp2"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGN-1p-HRP" customClass="HiddenFocusView" customModule="AerialTV2" customModuleProvider="target">
+                                <rect key="frame" x="840" y="160" width="240" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="7n4-XT-anD"/>
+                                    <constraint firstAttribute="height" constant="120" id="hNb-ki-BcL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="csh-yS-hKo" firstAttribute="centerY" secondItem="wu6-TO-1qx" secondAttribute="centerY" id="7sC-P1-SQs"/>
+                            <constraint firstItem="qGN-1p-HRP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KeM-b5-y22"/>
+                            <constraint firstItem="2pj-2G-tn2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="O2a-NX-Lbx"/>
+                            <constraint firstAttribute="bottom" secondItem="2pj-2G-tn2" secondAttribute="bottom" id="RWA-yz-ba9"/>
+                            <constraint firstItem="YeP-EL-6c2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VOc-VU-APb"/>
+                            <constraint firstAttribute="trailing" secondItem="YeP-EL-6c2" secondAttribute="trailing" id="Z4K-cV-35o"/>
+                            <constraint firstItem="csh-yS-hKo" firstAttribute="centerX" secondItem="wu6-TO-1qx" secondAttribute="centerX" id="aq9-us-hIB"/>
+                            <constraint firstItem="YeP-EL-6c2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="coS-Ul-dcU"/>
+                            <constraint firstAttribute="bottom" secondItem="YeP-EL-6c2" secondAttribute="bottom" id="m6e-hI-Gkt"/>
+                            <constraint firstItem="qGN-1p-HRP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="pgB-0n-SbQ"/>
+                            <constraint firstItem="2pj-2G-tn2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pwl-aZ-xvS"/>
+                            <constraint firstAttribute="trailing" secondItem="2pj-2G-tn2" secondAttribute="trailing" id="xyR-h0-rCK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Screensaver" id="m4S-d2-ryE"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="csh-yS-hKo" id="7Wi-tl-mCo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="69" y="1699"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="Jke-0f-dbZ">
+            <objects>
+                <avPlayerViewController showsPlaybackControls="NO" videoGravity="AVLayerVideoGravityResizeAspect" id="gwz-LA-GHG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uef-fy-7p8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-966" y="3337"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="rrS-yD-O1l">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="vrX-mG-MSG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HtW-hM-Bcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1155" y="3337"/>
+        </scene>
+    </scenes>
+</document>

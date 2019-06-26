@@ -30,10 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                object: nil,
                                                queue: .main)
         { _ in
-            guard let productIdentifiers = AerialCache.categories?.compactMap({ $0.info.productIdentifier }) else {
-                return
-            }
-            AerialAppStoreIAP.shared.update(productIdentifiers: productIdentifiers)
+            guard let categories = AerialCache.categories else { return }
+            let allVideos = categories.compactMap({ $0.videos }).reduce([], +)
+
+            AerialAppStoreIAP.shared.update(productIdentifiers: categories.compactMap({ $0.info.productIdentifier }))
+            AerialImageProvider.shared.preloadImages(for: allVideos)
         }
     }
 

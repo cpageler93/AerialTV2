@@ -117,7 +117,7 @@ public extension AerialAPI {
 
 public extension AerialAPI {
 
-    struct Video: Codable {
+    struct Video: Codable, Hashable, Equatable {
 
         public let title: String
         public let url: String
