@@ -23,6 +23,8 @@
 		5955C6BB22C3D41F002C1DB4 /* AerialSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BA22C3D41F002C1DB4 /* AerialSettings.swift */; };
 		5955C6BD22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BC22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift */; };
 		5955C6BF22C3DBD5002C1DB4 /* AerialImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */; };
+		5955C6C222C494F5002C1DB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5955C6C422C494F5002C1DB4 /* Localizable.strings */; };
+		5955C6C722C4951A002C1DB4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6C622C4951A002C1DB4 /* String.swift */; };
 		59C479DE22C123A000DF0BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C479DD22C123A000DF0BA2 /* AppDelegate.swift */; };
 		59C479E322C123A000DF0BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C479E122C123A000DF0BA2 /* Main.storyboard */; };
 		59C479E522C123A200DF0BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C479E422C123A200DF0BA2 /* Assets.xcassets */; };
@@ -50,6 +52,9 @@
 		5955C6BA22C3D41F002C1DB4 /* AerialSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialSettings.swift; sourceTree = "<group>"; };
 		5955C6BC22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialImageProvider.swift; sourceTree = "<group>"; };
+		5955C6C322C494F5002C1DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5955C6C522C4950A002C1DB4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5955C6C622C4951A002C1DB4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		59C479DA22C123A000DF0BA2 /* AerialTV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialTV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C479DD22C123A000DF0BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59C479E222C123A000DF0BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,8 +144,10 @@
 				59C479DD22C123A000DF0BA2 /* AppDelegate.swift */,
 				5955C6AF22C3B5E9002C1DB4 /* HiddenFocusView.swift */,
 				5955C6B122C3BE98002C1DB4 /* Collection.swift */,
+				5955C6C622C4951A002C1DB4 /* String.swift */,
 				5955C69722C3A181002C1DB4 /* Features */,
 				59C479E122C123A000DF0BA2 /* Main.storyboard */,
+				5955C6C422C494F5002C1DB4 /* Localizable.strings */,
 				59C479E422C123A200DF0BA2 /* Assets.xcassets */,
 				59C479E622C123A200DF0BA2 /* Info.plist */,
 				59C479F222C12DB100DF0BA2 /* AerialAPI.swift */,
@@ -214,6 +221,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 59C479D122C123A000DF0BA2;
 			productRefGroup = 59C479DB22C123A000DF0BA2 /* Products */;
@@ -231,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5955C6B522C3CA9C002C1DB4 /* Categories.storyboard in Resources */,
+				5955C6C222C494F5002C1DB4 /* Localizable.strings in Resources */,
 				59C479E522C123A200DF0BA2 /* Assets.xcassets in Resources */,
 				59C479E322C123A000DF0BA2 /* Main.storyboard in Resources */,
 				5955C6A022C3A2BD002C1DB4 /* Screensaver.storyboard in Resources */,
@@ -280,6 +289,7 @@
 				5955C6BD22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift in Sources */,
 				59C479F522C1E47A00DF0BA2 /* AerialCache.swift in Sources */,
 				59C479F322C12DB100DF0BA2 /* AerialAPI.swift in Sources */,
+				5955C6C722C4951A002C1DB4 /* String.swift in Sources */,
 				5955C6A322C3A632002C1DB4 /* AerialTabBarController.swift in Sources */,
 				5955C6B022C3B5E9002C1DB4 /* HiddenFocusView.swift in Sources */,
 			);
@@ -288,6 +298,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5955C6C422C494F5002C1DB4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5955C6C322C494F5002C1DB4 /* en */,
+				5955C6C522C4950A002C1DB4 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		59C479E122C123A000DF0BA2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -303,6 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -363,6 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

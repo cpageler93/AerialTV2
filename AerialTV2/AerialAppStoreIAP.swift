@@ -24,6 +24,7 @@ public class AerialAppStoreIAP {
 
     public func initialize() {
         loadPurchasedProductIdentifiers()
+
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
                 switch purchase.transaction.transactionState {
@@ -57,11 +58,16 @@ public class AerialAppStoreIAP {
     public func update(productIdentifiers: [String]) {
         SwiftyStoreKit.retrieveProductsInfo(Set(productIdentifiers)) { result in
             self.products = Array(result.retrievedProducts)
+            NotificationCenter.default.post(name: AerialAppStoreIAP.didUpdateProductsNotification, object: nil)
         }
     }
 
     public func restorePurchases(completion: @escaping () -> Void) {
-        SwiftyStoreKit.restorePurchases { _ in
+        SwiftyStoreKit.restorePurchases { result in
+            for productID in result.restoredPurchases.compactMap({ $0.productId }) {
+                self.purchasedProductIdentifiers.insert(productID)
+            }
+            self.savePurchasedProductIdentifiers()
             DispatchQueue.main.async {
                 completion()
             }
@@ -69,18 +75,28 @@ public class AerialAppStoreIAP {
     }
 
     public func isPurchased(product: SKProduct?) -> Bool {
-        // TODO: Implement method
-        return false
+        guard let product = product else { return false }
+        return purchasedProductIdentifiers.contains(product.productIdentifier)
     }
 
     public func purchase(product: SKProduct?, completion: @escaping () -> Void) {
         guard let product = product else { return }
         guard !product.productIdentifier.isEmpty else { return }
-        SwiftyStoreKit.purchaseProduct(product) { _ in
+        SwiftyStoreKit.purchaseProduct(product) { result in
+            switch result {
+            case .success(let purchase):
+                self.purchasedProductIdentifiers.insert(purchase.productId)
+                self.savePurchasedProductIdentifiers()
+            default:
+                break
+            }
+
             DispatchQueue.main.async {
                 completion()
             }
         }
     }
+
+    public static var didUpdateProductsNotification = Notification.Name("AerialAppStoreIAP.didUpdateProductsNotification")
 
 }

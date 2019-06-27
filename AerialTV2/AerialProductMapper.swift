@@ -26,6 +26,14 @@ public class AerialProductMapper {
             }
         }
 
+        public func localizedPrice() -> String? {
+            if product.productIdentifier.isEmpty {
+                return "315€"
+            } else {
+                return product.localizedPrice
+            }
+        }
+
     }
 
     public func map(categories: [AerialAPI.Category]) -> [CategoryProduct] {

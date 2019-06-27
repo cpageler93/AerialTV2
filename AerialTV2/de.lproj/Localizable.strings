@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  AerialTV2
+
+  Created by Christoph Pageler on 27.06.19.
+  Copyright © 2019 Christoph Pageler. All rights reserved.
+*/
+
+
+"Buy" = "Kaufen";
+"Videos" = "Videos";
+"RestorePurchases" = "Käufe wiederherstellen";

@@ -24,14 +24,24 @@ class CategoriesVC: UIViewController {
 
     @IBOutlet var labelVisibleCategoryTitle: UILabel!
     @IBOutlet var labelVisibleCategorySubtitle: UILabel!
+    @IBOutlet var captionButtonViewVisibleCategoryBuy: TVCaptionButtonView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         labelVisibleCategoryTitle.text = ""
         labelVisibleCategorySubtitle.text = ""
+        captionButtonViewVisibleCategoryBuy.isHidden = true
+
+        buttonRestore.setTitle("RestorePurchases".localized(), for: .normal)
 
         NotificationCenter.default.addObserver(forName: AerialCache.didUpdateCategoriesNotification,
+                                               object: nil,
+                                               queue: .main)
+        { _ in
+            self.reloadCategories()
+        }
+        NotificationCenter.default.addObserver(forName: AerialAppStoreIAP.didUpdateProductsNotification,
                                                object: nil,
                                                queue: .main)
         { _ in
@@ -44,6 +54,17 @@ class CategoriesVC: UIViewController {
         let productMapper = AerialProductMapper()
         categories = productMapper.map(categories: AerialCache.categories ?? [])
         tableView.reloadData()
+    }
+
+    private func reloadVisibleCategory() {
+        labelVisibleCategoryTitle.text = visibleCategory?.title()
+        labelVisibleCategorySubtitle.text = "\(visibleCategory?.category.videos.count ?? 0) \("Videos".localized())"
+
+        captionButtonViewVisibleCategoryBuy.contentText = "Buy".localized()
+        captionButtonViewVisibleCategoryBuy.title = visibleCategory?.localizedPrice()
+        captionButtonViewVisibleCategoryBuy.isHidden = AerialAppStoreIAP.shared.isPurchased(product: visibleCategory?.product)
+
+        collectionView.reloadData()
     }
 
     @IBAction func actionRestorePurchases(_ sender: UIButton) {
@@ -86,11 +107,7 @@ extension CategoriesVC: UITableViewDelegate {
                    with coordinator: UIFocusAnimationCoordinator) {
         guard let indexPath = context.nextFocusedIndexPath else { return }
         visibleCategory = categories[safe: indexPath.row]
-
-        labelVisibleCategoryTitle.text = visibleCategory?.title()
-        labelVisibleCategorySubtitle.text = "\(visibleCategory?.category.videos.count ?? 0) Videos"
-
-        collectionView.reloadData()
+        reloadVisibleCategory()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -106,6 +123,7 @@ extension CategoriesVC: UITableViewDelegate {
                     AerialSettings.shared.toggleVisibility(category: categoryProduct.category)
                     self.reloadCategories()
                 }
+                self.reloadVisibleCategory()
             }
         }
     }
