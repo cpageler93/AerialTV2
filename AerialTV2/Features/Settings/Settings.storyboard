@@ -13,7 +13,7 @@
         <!--Settings-->
         <scene sceneID="mkD-HG-5Y2">
             <objects>
-                <viewController id="Ya8-yE-EOF" sceneMemberID="viewController">
+                <viewController id="Ya8-yE-EOF" customClass="SettingsVC" customModule="AerialTV2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Ww-8l-S7f"/>
                         <viewControllerLayoutGuide type="bottom" id="g5c-Ml-yYr"/>
@@ -21,10 +21,70 @@
                     <view key="view" contentMode="scaleToFill" id="gZC-3y-H7U">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="JBn-78-Ir1">
+                                <rect key="frame" x="1330" y="110" width="500" height="860"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="3eX-Ak-yjs"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="basicCell" textLabel="w4e-TU-jUF" style="IBUITableViewCellStyleDefault" id="LZF-H8-siX">
+                                        <rect key="frame" x="0.0" y="66" width="500" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LZF-H8-siX" id="6sV-Qs-p8e">
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w4e-TU-jUF">
+                                                    <rect key="frame" x="20" y="0.0" width="460" height="66"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ya8-yE-EOF" id="f3L-61-mhb"/>
+                                    <outlet property="delegate" destination="Ya8-yE-EOF" id="MOx-On-nbj"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0UE-E5-Uug">
+                                <rect key="frame" x="140" y="110" width="338" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qil-ve-D1d">
+                                        <rect key="frame" x="0.0" y="0.0" width="338" height="91"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAt-mJ-aUo">
+                                        <rect key="frame" x="0.0" y="99" width="338" height="58"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="tH7-XM-GSU" firstAttribute="trailing" secondItem="JBn-78-Ir1" secondAttribute="trailing" id="8gF-ip-xe0"/>
+                            <constraint firstItem="g5c-Ml-yYr" firstAttribute="top" secondItem="JBn-78-Ir1" secondAttribute="bottom" constant="50" id="ZOR-5Q-fIj"/>
+                            <constraint firstItem="JBn-78-Ir1" firstAttribute="top" secondItem="4Ww-8l-S7f" secondAttribute="bottom" constant="50" id="vFV-Td-pBV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tH7-XM-GSU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="B1R-xC-7Xy"/>
                     <simulatedTabBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="labelAppName" destination="Qil-ve-D1d" id="rwj-6M-5nM"/>
+                        <outlet property="labelAppVersion" destination="vAt-mJ-aUo" id="xZz-Et-9x1"/>
+                        <outlet property="tableView" destination="JBn-78-Ir1" id="fgb-Jz-y30"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="das-6T-Qan" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

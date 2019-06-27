@@ -10,3 +10,7 @@
 "Buy" = "Buy";
 "Videos" = "Videos";
 "RestorePurchases" = "Restore Purchases";
+
+"SettingsDate" = "Current Date";
+"SettingsDateShowDate" = "Show Date";
+"SettingsDateShowTime" = "Show Time";

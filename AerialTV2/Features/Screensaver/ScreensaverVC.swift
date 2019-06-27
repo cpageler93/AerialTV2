@@ -16,6 +16,10 @@ class ScreensaverVC: UIViewController {
     private var playerController1: AVPlayerViewController?
     private var playerController2: AVPlayerViewController?
 
+    @IBOutlet var labelDate: UILabel!
+    private var dateFormatter = DateFormatter()
+    private var timerUpdateDate: Timer?
+
     private weak var playerControllerActive: AVPlayerViewController?
     private weak var playerControllerInactive: AVPlayerViewController? {
         guard let playerControllerActive = playerControllerActive else {
@@ -34,6 +38,10 @@ class ScreensaverVC: UIViewController {
 
     private let queue = AerialQueue()
 
+    private var firstAppear: Bool = true
+
+    private var playerRate: Float = 1.7
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,6 +59,59 @@ class ScreensaverVC: UIViewController {
             }
         }
         prepareInitialVideo()
+
+        NotificationCenter.default.addObserver(forName: AerialSettings.didUpdateSettingsNotification,
+                                               object: nil,
+                                               queue: .main)
+        { _ in
+            self.prepareUIFromSettings()
+        }
+        prepareUIFromSettings()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        timerUpdateDate?.invalidate()
+
+        timerLoadNextVideo?.invalidate()
+        playerControllerActive?.player?.pause()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard !firstAppear else {
+            firstAppear = false
+            return
+        }
+
+        prepareUIFromSettings()
+        playerControllerActive?.player?.playImmediately(atRate: playerRate)
+        let currentSeconds = playerControllerActive?.player?.currentTime().seconds ?? 0
+        let totalSeconds = playerControllerActive?.player?.currentItem?.duration.seconds ?? 0
+        let remainingSeconds = totalSeconds - currentSeconds
+        prepareTimerForNextVideo(currentItemDuration: remainingSeconds / Double(playerRate))
+    }
+
+    private func prepareUIFromSettings() {
+        // Date
+        let showDateOrTime = AerialSettings.shared.showDate || AerialSettings.shared.showTime
+        labelDate.isHidden = !showDateOrTime
+        dateFormatter.dateStyle = AerialSettings.shared.showDate ? .medium : .none
+        dateFormatter.timeStyle = AerialSettings.shared.showTime ? .medium : .none
+
+        timerUpdateDate?.invalidate()
+        if showDateOrTime {
+            timerUpdateDate = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                self.updateLabelWithCurrentDate()
+            })
+            updateLabelWithCurrentDate()
+        }
+    }
+
+    private func updateLabelWithCurrentDate() {
+        labelDate.text = dateFormatter.string(from: Date())
     }
 
     private func prepareInitialVideo() {
@@ -89,7 +150,7 @@ class ScreensaverVC: UIViewController {
     }
 
     private func play(player: AVPlayer, asset: AVAsset, for playerController: AVPlayerViewController) {
-        player.playImmediately(atRate: 0.7)
+        player.playImmediately(atRate: playerRate)
 
         playerControllerActive = playerController
         playerController.player = player

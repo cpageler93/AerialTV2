@@ -65,7 +65,7 @@
                                 <rect key="frame" x="1250" y="945" width="64" height="64"/>
                             </activityIndicatorView>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Txe-8I-7B3">
-                                <rect key="frame" x="90" y="199" width="1040" height="821"/>
+                                <rect key="frame" x="90" y="249" width="1040" height="771"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8ns-4X-YoR">
                                     <size key="itemSize" width="403" height="295"/>
@@ -103,7 +103,7 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o5G-Pb-NMM">
-                                <rect key="frame" x="90" y="60" width="93" height="89"/>
+                                <rect key="frame" x="90" y="110" width="93" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mD-Iz-06q">
                                         <rect key="frame" x="0.0" y="0.0" width="93" height="46"/>
@@ -120,13 +120,16 @@
                                 </subviews>
                             </stackView>
                             <tvCaptionButtonView contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" contentText="Content Text" title="Title" translatesAutoresizingMaskIntoConstraints="NO" id="CU9-pv-7zm">
-                                <rect key="frame" x="223" y="44" width="156" height="122"/>
+                                <rect key="frame" x="223" y="94" width="156" height="122"/>
+                                <connections>
+                                    <action selector="actionBuyVisibleCategory:" destination="0xZ-7n-fy0" eventType="primaryActionTriggered" id="tzB-aL-O6o"/>
+                                </connections>
                             </tvCaptionButtonView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Gw8-g4-gj4" firstAttribute="top" secondItem="usl-BB-YxH" secondAttribute="bottom" constant="50" id="CNo-42-KyL"/>
                             <constraint firstItem="Gw8-g4-gj4" firstAttribute="leading" secondItem="WIL-RO-EWd" secondAttribute="trailing" constant="40" id="EcW-Ms-13c"/>
-                            <constraint firstItem="o5G-Pb-NMM" firstAttribute="top" secondItem="E32-E5-TmF" secondAttribute="bottom" id="JA3-Zi-S6p"/>
+                            <constraint firstItem="o5G-Pb-NMM" firstAttribute="top" secondItem="E32-E5-TmF" secondAttribute="bottom" constant="50" id="JA3-Zi-S6p"/>
                             <constraint firstItem="Txe-8I-7B3" firstAttribute="top" secondItem="o5G-Pb-NMM" secondAttribute="bottom" constant="50" id="Nb5-3a-5qY"/>
                             <constraint firstItem="Mbu-Vz-e5r" firstAttribute="bottom" secondItem="Txe-8I-7B3" secondAttribute="bottom" id="Pes-jF-AYj"/>
                             <constraint firstItem="usl-BB-YxH" firstAttribute="top" secondItem="E32-E5-TmF" secondAttribute="bottom" constant="50" id="Z30-k1-teo"/>
@@ -147,7 +150,7 @@
                     <connections>
                         <outlet property="activityIndicatorViewRestore" destination="WIL-RO-EWd" id="aPy-yl-a1L"/>
                         <outlet property="buttonRestore" destination="Gw8-g4-gj4" id="izs-iD-VeR"/>
-                        <outlet property="captionButtonViewVisibleCategoryBuy" destination="CU9-pv-7zm" id="Z3h-Fd-nbC"/>
+                        <outlet property="captionButtonViewVisibleCategoryBuy" destination="CU9-pv-7zm" id="gGc-kd-rtd"/>
                         <outlet property="collectionView" destination="Txe-8I-7B3" id="hwa-AA-l3K"/>
                         <outlet property="labelVisibleCategorySubtitle" destination="33s-cE-K3x" id="h9t-HC-bBR"/>
                         <outlet property="labelVisibleCategoryTitle" destination="6mD-Iz-06q" id="pjt-Tf-rfZ"/>

@@ -75,6 +75,14 @@ class CategoriesVC: UIViewController {
         }
     }
 
+    @IBAction func actionBuyVisibleCategory(_ sender: TVCaptionButtonView) {
+        guard let visibleCategory = visibleCategory else { return }
+        AerialAppStoreIAP.shared.purchase(product: visibleCategory.product) {
+            self.reloadCategories()
+            self.reloadVisibleCategory()
+        }
+    }
+
 }
 
 
@@ -106,7 +114,11 @@ extension CategoriesVC: UITableViewDelegate {
                    didUpdateFocusIn context: UITableViewFocusUpdateContext,
                    with coordinator: UIFocusAnimationCoordinator) {
         guard let indexPath = context.nextFocusedIndexPath else { return }
-        visibleCategory = categories[safe: indexPath.row]
+        guard let newVisibleCategory = categories[safe: indexPath.row] else { return }
+        let newProductID = newVisibleCategory.category.info.productIdentifier
+        let oldProductID = visibleCategory?.category.info.productIdentifier ?? ""
+        guard oldProductID != newProductID else { return }
+        visibleCategory = newVisibleCategory
         reloadVisibleCategory()
     }
 

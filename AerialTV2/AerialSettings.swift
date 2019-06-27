@@ -15,6 +15,10 @@ public class AerialSettings {
     public static let shared = AerialSettings()
 
     private init() {
+        UserDefaults.standard.register(defaults: [
+            "showDate" : true,
+            "showTime": false
+        ])
         loadVisibleCategoryProductIdentifiers()
     }
 
@@ -47,5 +51,29 @@ public class AerialSettings {
         }
         saveVisibleCategoryProductIdentifiers()
     }
+
+    public var showDate: Bool {
+        set {
+            UserDefaults.standard.set(newValue, forKey: "showDate")
+            UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(name: AerialSettings.didUpdateSettingsNotification, object: nil)
+        }
+        get {
+            return UserDefaults.standard.bool(forKey: "showDate")
+        }
+    }
+
+    public var showTime: Bool {
+        set {
+            UserDefaults.standard.set(newValue, forKey: "showTime")
+            UserDefaults.standard.synchronize()
+            NotificationCenter.default.post(name: AerialSettings.didUpdateSettingsNotification, object: nil)
+        }
+        get {
+            return UserDefaults.standard.bool(forKey: "showTime")
+        }
+    }
+
+    public static var didUpdateSettingsNotification = Notification.Name("AerialSettings.didUpdateSettingsNotification")
 
 }

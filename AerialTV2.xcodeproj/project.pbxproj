@@ -25,6 +25,7 @@
 		5955C6BF22C3DBD5002C1DB4 /* AerialImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */; };
 		5955C6C222C494F5002C1DB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5955C6C422C494F5002C1DB4 /* Localizable.strings */; };
 		5955C6C722C4951A002C1DB4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6C622C4951A002C1DB4 /* String.swift */; };
+		5955C6C922C49909002C1DB4 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6C822C49909002C1DB4 /* SettingsVC.swift */; };
 		59C479DE22C123A000DF0BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C479DD22C123A000DF0BA2 /* AppDelegate.swift */; };
 		59C479E322C123A000DF0BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C479E122C123A000DF0BA2 /* Main.storyboard */; };
 		59C479E522C123A200DF0BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C479E422C123A200DF0BA2 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		5955C6C322C494F5002C1DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5955C6C522C4950A002C1DB4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5955C6C622C4951A002C1DB4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		5955C6C822C49909002C1DB4 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		59C479DA22C123A000DF0BA2 /* AerialTV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialTV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C479DD22C123A000DF0BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59C479E222C123A000DF0BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				5955C6A522C3A6C4002C1DB4 /* Settings.storyboard */,
+				5955C6C822C49909002C1DB4 /* SettingsVC.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				5955C6BB22C3D41F002C1DB4 /* AerialSettings.swift in Sources */,
 				59C479F722C1E9F100DF0BA2 /* AerialAppStoreIAP.swift in Sources */,
 				59C479DE22C123A000DF0BA2 /* AppDelegate.swift in Sources */,
+				5955C6C922C49909002C1DB4 /* SettingsVC.swift in Sources */,
 				5955C6AA22C3AE13002C1DB4 /* AerialQueue.swift in Sources */,
 				5955C6B722C3CAAA002C1DB4 /* CategoriesVC.swift in Sources */,
 				5955C69A22C3A197002C1DB4 /* ScreensaverVC.swift in Sources */,
