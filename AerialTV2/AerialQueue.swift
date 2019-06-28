@@ -24,7 +24,7 @@ public class AerialQueue {
             self.reloadData()
         }
 
-        NotificationCenter.default.addObserver(forName: AerialSettings.didUpdateCategoryVisibiliyNotification,
+        NotificationCenter.default.addObserver(forName: AerialSettings.didUpdateCategoryVisibilityNotification,
                                                object: nil,
                                                queue: .main)
         { _ in
@@ -35,14 +35,19 @@ public class AerialQueue {
     }
 
     private func reloadData() {
-        let availableCagegories = AerialCache.categories?.filter { category in
-            let isVisible = AerialSettings.shared.isVisible(category: category)
-            let isPurchased = AerialAppStoreIAP.shared.isPurchased(productIdentifier: category.info.productIdentifier)
-            return isVisible && isPurchased
-        } ?? []
+        let mapper = AerialProductMapper()
+        var availableCategoryProducts = mapper.map(categories: AerialCache.categories ?? [])
+        availableCategoryProducts = availableCategoryProducts.filter { categoryProduct in
+            let isVisible = AerialSettings.shared.isVisible(category: categoryProduct.category)
+            let isWithoutProduct = categoryProduct.product == nil
+            let isPurchased = AerialAppStoreIAP.shared.isPurchased(product: categoryProduct.product)
+            return isVisible && (isWithoutProduct || isPurchased)
+        }
+        let availableCagegories = availableCategoryProducts.compactMap({ $0.category })
+
         allQueueableItems = availableCagegories.compactMap({ $0.videos }).reduce([], +)
         if items.count == 0 {
-            items = allQueueableItems
+            items = allQueueableItems.shuffled()
         }
     }
 
@@ -59,7 +64,7 @@ public class AerialQueue {
     public func popCurrent() {
         items.remove(at: 0)
         guard items.count <= 2 else { return }
-        items.append(contentsOf: allQueueableItems)
+        items.append(contentsOf: allQueueableItems.shuffled())
     }
 
 }

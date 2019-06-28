@@ -36,11 +36,11 @@ class ScreensaverVC: UIViewController {
 
     private var timerLoadNextVideo: Timer?
 
-    private let queue = AerialQueue()
+    private var queue = AerialQueue()
 
     private var firstAppear: Bool = true
 
-    private var playerRate: Float = 1.7
+    private var playerRate: Float = 0.9
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +65,22 @@ class ScreensaverVC: UIViewController {
                                                queue: .main)
         { _ in
             self.prepareUIFromSettings()
+        }
+        NotificationCenter.default.addObserver(forName: AerialSettings.didUpdateCategoryVisibilityNotification,
+                                               object: nil,
+                                               queue: .main)
+        { _ in
+            // reset all players and simulate new run
+            self.playerController1?.player?.pause()
+            self.playerController1?.player = nil
+            self.playerController2?.player?.pause()
+            self.playerController2?.player = nil
+            self.playerControllerActive = nil
+            self.timerLoadNextVideo?.invalidate()
+            self.timerLoadNextVideo = nil
+            self.queue = AerialQueue()
+
+            self.prepareInitialVideo()
         }
         prepareUIFromSettings()
     }

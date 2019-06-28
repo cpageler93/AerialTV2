@@ -36,6 +36,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AerialAppStoreIAP.shared.update(productIdentifiers: categories.compactMap({ $0.info.productIdentifier }))
             AerialImageProvider.shared.preloadImages(for: allVideos)
         }
+
+        NotificationCenter.default.addObserver(forName: AerialAppStoreIAP.didUpdateProductsNotification,
+                                               object: nil,
+                                               queue: .main)
+        { _ in
+            // check if we need to initialize the visible categories with all free categories
+            if AerialSettings.shared.numberOfVisibleCategories() == 0 {
+                let mapper = AerialProductMapper()
+                let categoryProducts = mapper.map(categories: AerialCache.categories ?? [])
+                let categoriesWithoutProduct = categoryProducts.filter({ $0.product == nil })
+                for category in categoriesWithoutProduct {
+                    AerialSettings.shared.setVisible(true, category: category.category)
+                }
+                AerialSettings.shared.sendDidUpdateVisibilityNotification()
+            }
+        }
     }
 
 }

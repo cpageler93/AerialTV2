@@ -84,7 +84,7 @@
         <!--AV Player View Controller-->
         <scene sceneID="Jke-0f-dbZ">
             <objects>
-                <avPlayerViewController showsPlaybackControls="NO" videoGravity="AVLayerVideoGravityResizeAspect" id="gwz-LA-GHG" sceneMemberID="viewController"/>
+                <avPlayerViewController showsPlaybackControls="NO" videoGravity="AVLayerVideoGravityResizeAspectFill" id="gwz-LA-GHG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uef-fy-7p8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-966" y="3337"/>
@@ -92,7 +92,7 @@
         <!--AV Player View Controller-->
         <scene sceneID="rrS-yD-O1l">
             <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="vrX-mG-MSG" sceneMemberID="viewController"/>
+                <avPlayerViewController showsPlaybackControls="NO" videoGravity="AVLayerVideoGravityResizeAspectFill" id="vrX-mG-MSG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtW-hM-Bcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1155" y="3337"/>

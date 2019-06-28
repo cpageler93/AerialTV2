@@ -40,7 +40,14 @@ public class AerialSettings {
     }
 
     public func toggleVisibility(category: AerialAPI.Category) {
-        setVisible(!isVisible(category: category), category: category)
+        let newVisibility = !isVisible(category: category)
+
+        // prevent 0 visible categories
+        if newVisibility == false && numberOfVisibleCategories() == 1 {
+            return
+        }
+
+        setVisible(newVisibility, category: category)
     }
 
     public func setVisible(_ visible: Bool, category: AerialAPI.Category) {
@@ -50,6 +57,14 @@ public class AerialSettings {
             visibleCategoryProductIdentifier.remove(category.info.productIdentifier)
         }
         saveVisibleCategoryProductIdentifiers()
+    }
+
+    public func sendDidUpdateVisibilityNotification() {
+        NotificationCenter.default.post(name: AerialSettings.didUpdateCategoryVisibilityNotification, object: nil)
+    }
+
+    public func numberOfVisibleCategories() -> Int {
+        return visibleCategoryProductIdentifier.count
     }
 
     public var showDate: Bool {
@@ -75,6 +90,6 @@ public class AerialSettings {
     }
 
     public static var didUpdateSettingsNotification = Notification.Name("AerialSettings.didUpdateSettingsNotification")
-    public static var didUpdateCategoryVisibiliyNotification = Notification.Name("AerialSettings.didUpdateCategoryVisibiliyNotification")
+    public static var didUpdateCategoryVisibilityNotification = Notification.Name("AerialSettings.didUpdateCategoryVisibilityNotification")
 
 }

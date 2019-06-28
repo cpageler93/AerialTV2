@@ -26,6 +26,7 @@
 		5955C6C222C494F5002C1DB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5955C6C422C494F5002C1DB4 /* Localizable.strings */; };
 		5955C6C722C4951A002C1DB4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6C622C4951A002C1DB4 /* String.swift */; };
 		5955C6C922C49909002C1DB4 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6C822C49909002C1DB4 /* SettingsVC.swift */; };
+		5960D38722C66556001D9CC2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5960D38922C66556001D9CC2 /* InfoPlist.strings */; };
 		59C479DE22C123A000DF0BA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C479DD22C123A000DF0BA2 /* AppDelegate.swift */; };
 		59C479E322C123A000DF0BA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C479E122C123A000DF0BA2 /* Main.storyboard */; };
 		59C479E522C123A200DF0BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C479E422C123A200DF0BA2 /* Assets.xcassets */; };
@@ -57,6 +58,8 @@
 		5955C6C522C4950A002C1DB4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5955C6C622C4951A002C1DB4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		5955C6C822C49909002C1DB4 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		5960D38822C66556001D9CC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5960D38A22C6655A001D9CC2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		59C479DA22C123A000DF0BA2 /* AerialTV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialTV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C479DD22C123A000DF0BA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59C479E222C123A000DF0BA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 				5955C69722C3A181002C1DB4 /* Features */,
 				59C479E122C123A000DF0BA2 /* Main.storyboard */,
 				5955C6C422C494F5002C1DB4 /* Localizable.strings */,
+				5960D38922C66556001D9CC2 /* InfoPlist.strings */,
 				59C479E422C123A200DF0BA2 /* Assets.xcassets */,
 				59C479E622C123A200DF0BA2 /* Info.plist */,
 				59C479F222C12DB100DF0BA2 /* AerialAPI.swift */,
@@ -242,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5955C6B522C3CA9C002C1DB4 /* Categories.storyboard in Resources */,
+				5960D38722C66556001D9CC2 /* InfoPlist.strings in Resources */,
 				5955C6C222C494F5002C1DB4 /* Localizable.strings in Resources */,
 				59C479E522C123A200DF0BA2 /* Assets.xcassets in Resources */,
 				59C479E322C123A000DF0BA2 /* Main.storyboard in Resources */,
@@ -309,6 +314,15 @@
 				5955C6C522C4950A002C1DB4 /* de */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		5960D38922C66556001D9CC2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5960D38822C66556001D9CC2 /* en */,
+				5960D38A22C6655A001D9CC2 /* de */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		59C479E122C123A000DF0BA2 /* Main.storyboard */ = {

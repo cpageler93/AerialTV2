@@ -22,6 +22,9 @@ public class AerialAppStoreIAP {
 
     private var purchasedProductIdentifiers: Set<String> = []
 
+    private let proProductIdentifier = "de.pageler.christoph.aerialtv2.pro.year"
+    public private(set) var proProduct: SKProduct?
+
     public func initialize() {
         loadPurchasedProductIdentifiers()
 
@@ -56,8 +59,11 @@ public class AerialAppStoreIAP {
     }
 
     public func update(productIdentifiers: [String]) {
-        SwiftyStoreKit.retrieveProductsInfo(Set(productIdentifiers)) { result in
+        var identifiers = Set(productIdentifiers)
+        identifiers.insert(proProductIdentifier)
+        SwiftyStoreKit.retrieveProductsInfo(identifiers) { result in
             self.products = Array(result.retrievedProducts)
+            self.proProduct = result.retrievedProducts.first(where: { $0.productIdentifier == self.proProductIdentifier })
             NotificationCenter.default.post(name: AerialAppStoreIAP.didUpdateProductsNotification, object: nil)
         }
     }
@@ -83,7 +89,9 @@ public class AerialAppStoreIAP {
         #if targetEnvironment(simulator)
         return true
         #endif
-        return purchasedProductIdentifiers.contains(productIdentifier)
+        let purchasedProduct = purchasedProductIdentifiers.contains(productIdentifier)
+        let purchasedPro = purchasedProductIdentifiers.contains(proProductIdentifier)
+        return purchasedProduct || purchasedPro
     }
 
     public func purchase(product: SKProduct?, completion: @escaping () -> Void) {

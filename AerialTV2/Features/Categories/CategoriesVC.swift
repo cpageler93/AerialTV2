@@ -25,13 +25,11 @@ class CategoriesVC: UIViewController {
     @IBOutlet var labelVisibleCategoryTitle: UILabel!
     @IBOutlet var labelVisibleCategorySubtitle: UILabel!
     @IBOutlet var captionButtonViewVisibleCategoryBuy: TVCaptionButtonView!
+    @IBOutlet var activityIndicatorBecomePro: UIActivityIndicatorView!
+    @IBOutlet var captionButtonViewBecomePro: TVCaptionButtonView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        labelVisibleCategoryTitle.text = ""
-        labelVisibleCategorySubtitle.text = ""
-        captionButtonViewVisibleCategoryBuy.isHidden = true
 
         buttonRestore.setTitle("RestorePurchases".localized(), for: .normal)
 
@@ -46,8 +44,11 @@ class CategoriesVC: UIViewController {
                                                queue: .main)
         { _ in
             self.reloadCategories()
+            self.updateBecomeProButton()
         }
         reloadCategories()
+        reloadVisibleCategory()
+        updateBecomeProButton()
     }
 
     private func reloadCategories() {
@@ -56,17 +57,44 @@ class CategoriesVC: UIViewController {
         tableView.reloadData()
     }
 
+    private func updateBecomeProButton() {
+        guard let proProduct = AerialAppStoreIAP.shared.proProduct else {
+            captionButtonViewBecomePro.isHidden = true
+            return
+        }
+
+        captionButtonViewBecomePro.contentText = "BecomePro".localized()
+        captionButtonViewBecomePro.title = "10,99€"//proProduct.localizedPrice
+        captionButtonViewBecomePro.subtitle = "PerYear".localized()
+
+        if AerialAppStoreIAP.shared.isPurchased(product: proProduct) {
+            captionButtonViewBecomePro.isHidden = true
+        } else {
+            captionButtonViewBecomePro.isHidden = false
+        }
+    }
+
     private func reloadVisibleCategory() {
-        labelVisibleCategoryTitle.text = visibleCategory?.title()
-        labelVisibleCategorySubtitle.text = "\(visibleCategory?.category.videos.count ?? 0) \("Videos".localized())"
+        guard let visibleCategory = visibleCategory else {
+            labelVisibleCategoryTitle.text = ""
+            labelVisibleCategorySubtitle.text = ""
+
+            captionButtonViewVisibleCategoryBuy.isHidden = true
+            collectionView.isHidden = true
+            return
+        }
+
+        labelVisibleCategoryTitle.text = visibleCategory.title()
+        labelVisibleCategorySubtitle.text = "\(visibleCategory.category.videos.count ?? 0) \("Videos".localized())"
 
         captionButtonViewVisibleCategoryBuy.contentText = "Buy".localized()
-        captionButtonViewVisibleCategoryBuy.title = visibleCategory?.localizedPrice()
-        let isPurchased = AerialAppStoreIAP.shared.isPurchased(product: visibleCategory?.product)
-        let canBePurchased = visibleCategory?.product != nil
+        captionButtonViewVisibleCategoryBuy.title = visibleCategory.localizedPrice()
+        let isPurchased = AerialAppStoreIAP.shared.isPurchased(product: visibleCategory.product)
+        let canBePurchased = visibleCategory.product != nil
         let showBuy = !isPurchased && canBePurchased
         captionButtonViewVisibleCategoryBuy.isHidden = !showBuy
 
+        collectionView.isHidden = false
         collectionView.reloadData()
     }
 
@@ -85,6 +113,18 @@ class CategoriesVC: UIViewController {
             self.reloadVisibleCategory()
         }
     }
+    @IBAction func actionBecomePro(_ sender: TVCaptionButtonView) {
+        guard let proProduct = AerialAppStoreIAP.shared.proProduct else { return }
+
+        activityIndicatorBecomePro.startAnimating()
+        AerialAppStoreIAP.shared.purchase(product: proProduct) {
+            self.activityIndicatorBecomePro.stopAnimating()
+
+            self.updateBecomeProButton()
+            self.reloadVisibleCategory()
+            self.reloadCategories()
+        }
+    }
 
 }
 
@@ -101,7 +141,7 @@ extension CategoriesVC: UITableViewDataSource {
         let categoryProduct = categories[safe: indexPath.row]
         cell.textLabel?.text = categoryProduct?.title()
         let isPurchased = AerialAppStoreIAP.shared.isPurchased(product: categoryProduct?.product)
-        let canBePurchased = visibleCategory?.product != nil
+        let canBePurchased = categoryProduct?.product != nil
         let isVisible = AerialSettings.shared.isVisible(category: categoryProduct?.category)
         let showCheckmark = (isPurchased && isVisible) || (!canBePurchased && isVisible)
         cell.accessoryType = showCheckmark ? .checkmark : .none
@@ -143,6 +183,7 @@ extension CategoriesVC: UITableViewDelegate {
                 self.reloadVisibleCategory()
             }
         }
+        AerialSettings.shared.sendDidUpdateVisibilityNotification()
     }
 
 }
