@@ -27,7 +27,12 @@ class AerialTabBarController: UITabBarController {
         super.viewDidLoad()
 
         tabBar.alpha = 0
+
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.tabBar.items?[safe: 0]?.title = "Screensaver".localized()
+            self.tabBar.items?[safe: 1]?.title = "Categories".localized()
+            self.tabBar.items?[safe: 2]?.title = "Settings".localized()
+
             self.tabBar.alpha = 1
         }
     }

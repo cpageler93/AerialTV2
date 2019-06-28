@@ -75,5 +75,6 @@ public class AerialSettings {
     }
 
     public static var didUpdateSettingsNotification = Notification.Name("AerialSettings.didUpdateSettingsNotification")
+    public static var didUpdateCategoryVisibiliyNotification = Notification.Name("AerialSettings.didUpdateCategoryVisibiliyNotification")
 
 }

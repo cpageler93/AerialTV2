@@ -63,6 +63,7 @@ public class AerialAPI {
             completion(nil)
             return
         }
+
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 completion(nil)
@@ -99,15 +100,25 @@ public extension AerialAPI {
         public struct Info: Codable {
 
             public let productIdentifier: String
+            public let titles: [String: String]
 
             enum CodingKeys: String, CodingKey {
                 case productIdentifier = "product_identifier"
+                case titles = "titles"
             }
 
         }
 
         public let info: Info
         public let videos: [Video]
+
+        public func title(languageCode: String) -> String? {
+            if let requestedTitle = info.titles[languageCode] {
+                return requestedTitle
+            }
+            // return english fallback
+            return info.titles["en"]
+        }
 
     }
 

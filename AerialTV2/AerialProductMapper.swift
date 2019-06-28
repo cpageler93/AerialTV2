@@ -16,22 +16,15 @@ public class AerialProductMapper {
     public struct CategoryProduct {
 
         public let category: AerialAPI.Category
-        public let product: SKProduct
+        public let product: SKProduct?
 
         public func title() -> String {
-            if product.productIdentifier.isEmpty {
-                return category.info.productIdentifier
-            } else {
-                return product.localizedTitle
-            }
+            let language = Locale.current.languageCode ?? "en"
+            return category.title(languageCode: language) ?? category.info.productIdentifier
         }
 
         public func localizedPrice() -> String? {
-            if product.productIdentifier.isEmpty {
-                return "315€"
-            } else {
-                return product.localizedPrice
-            }
+            return product?.localizedPrice
         }
 
     }
@@ -40,15 +33,8 @@ public class AerialProductMapper {
         let products = AerialAppStoreIAP.shared.products
         var categoryProducts: [CategoryProduct] = []
         for category in categories {
-            if let product = products.first(where: { $0.productIdentifier == category.info.productIdentifier }) {
-                categoryProducts.append(CategoryProduct(category: category, product: product))
-            } else {
-                // tvOS on Simulator cant fetch SKProducts so we fake them
-                #if targetEnvironment(simulator)
-                let fakeProduct = SKProduct()
-                categoryProducts.append(CategoryProduct(category: category, product: fakeProduct))
-                #endif
-            }
+            let product = products.first(where: { $0.productIdentifier == category.info.productIdentifier })
+            categoryProducts.append(CategoryProduct(category: category, product: product))
         }
         return categoryProducts
     }

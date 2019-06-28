@@ -76,7 +76,14 @@ public class AerialAppStoreIAP {
 
     public func isPurchased(product: SKProduct?) -> Bool {
         guard let product = product else { return false }
-        return purchasedProductIdentifiers.contains(product.productIdentifier)
+        return isPurchased(productIdentifier: product.productIdentifier)
+    }
+
+    public func isPurchased(productIdentifier: String) -> Bool {
+        #if targetEnvironment(simulator)
+        return true
+        #endif
+        return purchasedProductIdentifiers.contains(productIdentifier)
     }
 
     public func purchase(product: SKProduct?, completion: @escaping () -> Void) {
