@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "tv",
-      "filename" : "Wide@0,5x.png",
+      "filename" : "Artboard.png",
       "scale" : "1x"
     },
     {
       "idiom" : "tv",
-      "filename" : "Wide.png",
+      "filename" : "Artboard@2x.png",
       "scale" : "2x"
     },
     {
