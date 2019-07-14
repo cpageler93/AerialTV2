@@ -50,6 +50,10 @@ class ScreensaverVC: UIViewController {
         playerController2?.player = nil
         playerController2?.view?.alpha = 0
 
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureSwipeLeft))
+        swipeLeftGesture.direction = .left
+        view.addGestureRecognizer(swipeLeftGesture)
+
         NotificationCenter.default.addObserver(forName: AerialCache.didUpdateCategoriesNotification,
                                                object: nil,
                                                queue: .main)
@@ -110,6 +114,10 @@ class ScreensaverVC: UIViewController {
         prepareTimerForNextVideo(currentItemDuration: remainingSeconds / Double(playerRate))
     }
 
+    @objc private func gestureSwipeLeft(_ gesture: UISwipeGestureRecognizer) {
+        prepareTimerForNextVideo(currentItemDuration: 0, allowBuffer: false)
+    }
+
     private func prepareUIFromSettings() {
         // Date
         let showDateOrTime = AerialSettings.shared.showDate || AerialSettings.shared.showTime
@@ -149,10 +157,10 @@ class ScreensaverVC: UIViewController {
         return (player, asset)
     }
 
-    private func prepareTimerForNextVideo(currentItemDuration: TimeInterval) {
+    private func prepareTimerForNextVideo(currentItemDuration: TimeInterval, allowBuffer: Bool = true) {
         guard let playerControllerInactive = playerControllerInactive else { return }
         guard let nextItem = queue.nextItem() else { return }
-        let preloadDurationInSeconds = 5.0
+        let preloadDurationInSeconds = allowBuffer ? 5.0 : 0
         let startIn = max(currentItemDuration - preloadDurationInSeconds, 0)
 
         timerLoadNextVideo?.invalidate()

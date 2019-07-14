@@ -1,0 +1,75 @@
+{
+    "info": {
+        "product_identifier": "de.pageler.christoph.aerialtv2.beach",
+        "titles": {
+            "en": "Beach",
+            "de": "Strand"
+        }
+    },
+    "videos": [
+        {
+            "title": "Waves rushing and splashing to the shore",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/beach/beach-1-hd.mp4",
+            "duration": 21,
+            "fps": 25,
+            "resolution": "fullhd",
+            "author": "Michal Marek"
+        },
+        {
+            "title": "A rocky coast",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/beach/beach-2-hd.mp4",
+            "duration": 37,
+            "fps": 29,
+            "resolution": "fullhd",
+            "author": "Tom Fisk"
+        },
+        {
+            "title": "Aerial view of a beach",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/beach/beach-3-hd.mp4",
+            "duration": 35,
+            "fps": 29,
+            "resolution": "fullhd",
+            "author": "Tom Fisk"
+        },
+        {
+            "title": "A beautiful beach with turquoise water",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/beach/beach-4-hd.mp4",
+            "duration": 21,
+            "fps": 59,
+            "resolution": "fullhd",
+            "author": "Joseph Redfield"
+        },
+        {
+            "title": "Scenic view of a beach",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/beach/beach-5-hd.mp4",
+            "duration": 18,
+            "fps": 25,
+            "resolution": "fullhd",
+            "author": "Oleksandr Pidvalnyi"
+        },
+        {
+            "title": "Aerial view of beautiful resort",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/beach/beach-6-hd.mp4",
+            "duration": 38,
+            "fps": 29,
+            "resolution": "fullhd",
+            "author": "Tom Fisk"
+        },
+        {
+            "title": "Aerial view of beautiful resort",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/beach/beach-7-hd.mp4",
+            "duration": 86,
+            "fps": 29,
+            "resolution": "fullhd",
+            "author": "Tom Fisk"
+        },
+        {
+            "title": "Beautiful and clean beach",
+            "url": "https://aerialtv.fra1.cdn.digitaloceanspaces.com/beach/beach-8-hd.mp4",
+            "duration": 37,
+            "fps": 23,
+            "resolution": "fullhd",
+            "author": "kelly lacy"
+        }
+    ]
+}

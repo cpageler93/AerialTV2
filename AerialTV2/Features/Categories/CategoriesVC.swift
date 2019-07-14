@@ -64,8 +64,8 @@ class CategoriesVC: UIViewController {
         }
 
         captionButtonViewBecomePro.contentText = "BecomePro".localized()
-        captionButtonViewBecomePro.title = "10,99€"//proProduct.localizedPrice
-        captionButtonViewBecomePro.subtitle = "PerYear".localized()
+        captionButtonViewBecomePro.title = proProduct.localizedPrice
+        captionButtonViewBecomePro.subtitle = nil
 
         if AerialAppStoreIAP.shared.isPurchased(product: proProduct) {
             captionButtonViewBecomePro.isHidden = true

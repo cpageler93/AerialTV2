@@ -22,7 +22,7 @@ public class AerialAppStoreIAP {
 
     private var purchasedProductIdentifiers: Set<String> = []
 
-    private let proProductIdentifier = "de.pageler.christoph.aerialtv2.pro.year"
+    private let proProductIdentifier = "de.pageler.christoph.aerialtv2.pro"
     public private(set) var proProduct: SKProduct?
 
     public func initialize() {
