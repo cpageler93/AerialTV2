@@ -16,15 +16,14 @@ class CategoriesVC: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
 
-    private var categories: [AerialProductMapper.CategoryProduct] = []
-    private var visibleCategory: AerialProductMapper.CategoryProduct?
+    private var categories: [AerialAPI.Category] = []
+    private var visibleCategory: AerialAPI.Category?
 
     @IBOutlet var activityIndicatorViewRestore: UIActivityIndicatorView!
     @IBOutlet var buttonRestore: UIButton!
 
     @IBOutlet var labelVisibleCategoryTitle: UILabel!
     @IBOutlet var labelVisibleCategorySubtitle: UILabel!
-    @IBOutlet var captionButtonViewVisibleCategoryBuy: TVCaptionButtonView!
     @IBOutlet var activityIndicatorBecomePro: UIActivityIndicatorView!
     @IBOutlet var captionButtonViewBecomePro: TVCaptionButtonView!
 
@@ -52,8 +51,7 @@ class CategoriesVC: UIViewController {
     }
 
     private func reloadCategories() {
-        let productMapper = AerialProductMapper()
-        categories = productMapper.map(categories: AerialCache.categories ?? [])
+        categories = AerialCache.categories ?? []
         tableView.reloadData()
     }
 
@@ -79,24 +77,18 @@ class CategoriesVC: UIViewController {
             labelVisibleCategoryTitle.text = ""
             labelVisibleCategorySubtitle.text = ""
 
-            captionButtonViewVisibleCategoryBuy.isHidden = true
             collectionView.isHidden = true
             return
         }
 
-        labelVisibleCategoryTitle.text = visibleCategory.title()
-        labelVisibleCategorySubtitle.text = "\(visibleCategory.category.videos.count ?? 0) \("Videos".localized())"
-
-        captionButtonViewVisibleCategoryBuy.contentText = "Buy".localized()
-        captionButtonViewVisibleCategoryBuy.title = visibleCategory.localizedPrice()
-        let isPurchased = AerialAppStoreIAP.shared.isPurchased(product: visibleCategory.product)
-        let canBePurchased = visibleCategory.product != nil
-        let showBuy = !isPurchased && canBePurchased
-        captionButtonViewVisibleCategoryBuy.isHidden = !showBuy
+        labelVisibleCategoryTitle.text = visibleCategory.titleForCurrentLocale()
+        labelVisibleCategorySubtitle.text = "\(visibleCategory.videos.count) \("Videos".localized())"
 
         collectionView.isHidden = false
         collectionView.reloadData()
     }
+
+    // MARK: - Actions
 
     @IBAction func actionRestorePurchases(_ sender: UIButton) {
         activityIndicatorViewRestore.startAnimating()
@@ -106,13 +98,6 @@ class CategoriesVC: UIViewController {
         }
     }
 
-    @IBAction func actionBuyVisibleCategory(_ sender: TVCaptionButtonView) {
-        guard let visibleCategory = visibleCategory else { return }
-        AerialAppStoreIAP.shared.purchase(product: visibleCategory.product) {
-            self.reloadCategories()
-            self.reloadVisibleCategory()
-        }
-    }
     @IBAction func actionBecomePro(_ sender: TVCaptionButtonView) {
         guard let proProduct = AerialAppStoreIAP.shared.proProduct else { return }
 
@@ -128,6 +113,7 @@ class CategoriesVC: UIViewController {
 
 }
 
+// MARK: - UITableViewDataSource
 
 extension CategoriesVC: UITableViewDataSource {
 
@@ -138,12 +124,13 @@ extension CategoriesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let categoryProduct = categories[safe: indexPath.row]
-        cell.textLabel?.text = categoryProduct?.title()
-        let isPurchased = AerialAppStoreIAP.shared.isPurchased(product: categoryProduct?.product)
-        let canBePurchased = categoryProduct?.product != nil
-        let isVisible = AerialSettings.shared.isVisible(category: categoryProduct?.category)
-        let showCheckmark = (isPurchased && isVisible) || (!canBePurchased && isVisible)
+        let category = categories[safe: indexPath.row]
+        cell.textLabel?.text = category?.titleForCurrentLocale()
+//        let isPurchased = AerialAppStoreIAP.shared.isPurchased(product: categoryProduct?.product)
+//        let canBePurchased = categoryProduct?.product != nil
+        let isVisible = AerialSettings.shared.isVisible(category: category)
+        let showCheckmark = isVisible
+//        let showCheckmark = (isPurchased && isVisible) || (!canBePurchased && isVisible)
         cell.accessoryType = showCheckmark ? .checkmark : .none
 
         return cell
@@ -151,6 +138,7 @@ extension CategoriesVC: UITableViewDataSource {
 
 }
 
+// MARK: - UITableViewDelegate
 
 extension CategoriesVC: UITableViewDelegate {
 
@@ -159,47 +147,69 @@ extension CategoriesVC: UITableViewDelegate {
                    with coordinator: UIFocusAnimationCoordinator) {
         guard let indexPath = context.nextFocusedIndexPath else { return }
         guard let newVisibleCategory = categories[safe: indexPath.row] else { return }
-        let newProductID = newVisibleCategory.category.info.productIdentifier
-        let oldProductID = visibleCategory?.category.info.productIdentifier ?? ""
+        let newProductID = newVisibleCategory.info.productIdentifier
+        let oldProductID = visibleCategory?.info.productIdentifier ?? ""
         guard oldProductID != newProductID else { return }
         visibleCategory = newVisibleCategory
         reloadVisibleCategory()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let categoryProduct = categories[safe: indexPath.row] else { return }
+        guard let category = categories[safe: indexPath.row] else { return }
 
-        let canBePurchased = categoryProduct.product != nil
-        if AerialAppStoreIAP.shared.isPurchased(product: categoryProduct.product) || !canBePurchased {
-            AerialSettings.shared.toggleVisibility(category: categoryProduct.category)
+        func toggleAndReload() {
+            AerialSettings.shared.toggleVisibility(category: category)
             reloadCategories()
-        } else {
-            AerialAppStoreIAP.shared.purchase(product: categoryProduct.product) {
-                // check if user purchased product
-                if AerialAppStoreIAP.shared.isPurchased(product: categoryProduct.product) {
-                    AerialSettings.shared.toggleVisibility(category: categoryProduct.category)
-                    self.reloadCategories()
-                }
-                self.reloadVisibleCategory()
-            }
+            AerialSettings.shared.sendDidUpdateVisibilityNotification()
         }
-        AerialSettings.shared.sendDidUpdateVisibilityNotification()
+
+        if category.info.isProContent {
+            if AerialAppStoreIAP.shared.isPro() {
+                toggleAndReload()
+            } else {
+                AerialAppStoreIAP.shared.purchase(product: AerialAppStoreIAP.shared.proProduct) {
+                    // check if user purchased product
+                    if AerialAppStoreIAP.shared.isPro() {
+                        toggleAndReload()
+                    }
+                }
+            }
+        } else {
+            toggleAndReload()
+        }
+
+//        let canBePurchased = categoryProduct.product != nil
+//        if AerialAppStoreIAP.shared.isPurchased(product: categoryProduct.product) || !canBePurchased {
+//            AerialSettings.shared.toggleVisibility(category: categoryProduct.category)
+//            reloadCategories()
+//        } else {
+//            AerialAppStoreIAP.shared.purchase(product: categoryProduct.product) {
+//                // check if user purchased product
+//                if AerialAppStoreIAP.shared.isPurchased(product: categoryProduct.product) {
+//                    AerialSettings.shared.toggleVisibility(category: categoryProduct.category)
+//                    self.reloadCategories()
+//                }
+//                self.reloadVisibleCategory()
+//            }
+//        }
+//        AerialSettings.shared.sendDidUpdateVisibilityNotification()
     }
 
 }
 
+// MARK: - UICollectionViewDataSource
 
 extension CategoriesVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return visibleCategory?.category.videos.count ?? 0
+        return visibleCategory?.videos.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoPosterCollectionViewCell",
                                                       for: indexPath) as! VideoPosterCollectionViewCell
 
-        let video = visibleCategory?.category.videos[safe: indexPath.row]
+        let video = visibleCategory?.videos[safe: indexPath.row]
         cell.posterView.title = video?.title
         cell.posterView.subtitle = video?.author
         cell.posterView.image = AerialImageProvider.shared.image(for: video)
@@ -209,6 +219,7 @@ extension CategoriesVC: UICollectionViewDataSource {
 
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension CategoriesVC: UICollectionViewDelegateFlowLayout {
 
@@ -228,17 +239,23 @@ extension CategoriesVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: itemWidth, height: itemHeight)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
     }
 
     // vertical
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 50
     }
 
     // horizonal
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 50
     }
 

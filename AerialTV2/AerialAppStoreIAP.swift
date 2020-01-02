@@ -22,7 +22,7 @@ public class AerialAppStoreIAP {
 
     private var purchasedProductIdentifiers: Set<String> = []
 
-    private let proProductIdentifier = "de.pageler.christoph.aerialtv2.pro"
+    private let proProductIdentifier = "de.pageler.christoph.aerialtv3.pro"
     public private(set) var proProduct: SKProduct?
 
     public func initialize() {
@@ -92,6 +92,10 @@ public class AerialAppStoreIAP {
         let purchasedProduct = purchasedProductIdentifiers.contains(productIdentifier)
         let purchasedPro = purchasedProductIdentifiers.contains(proProductIdentifier)
         return purchasedProduct || purchasedPro
+    }
+
+    public func isPro() -> Bool {
+        return isPurchased(productIdentifier: proProductIdentifier)
     }
 
     public func purchase(product: SKProduct?, completion: @escaping () -> Void) {

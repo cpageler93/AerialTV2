@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0xZ-7n-fy0">
-    <device id="appleTV" orientation="landscape">
-        <adaptation id="light"/>
-    </device>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0xZ-7n-fy0">
+    <device id="appleTV" appearance="light"/>
     <dependencies>
         <deployment identifier="tvOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="TVUIKit controls" minToolsVersion="10.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,13 +22,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="usl-BB-YxH">
-                                <rect key="frame" x="1330" y="110" width="500" height="604"/>
+                                <rect key="frame" x="1330" y="207" width="500" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="500" id="lze-UU-sSg"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="raF-ZT-QGV" rowHeight="97" style="IBUITableViewCellStyleDefault" id="8uY-Kl-f3P">
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="raF-ZT-QGV" rowHeight="97" style="IBUITableViewCellStyleDefault" id="8uY-Kl-f3P">
                                         <rect key="frame" x="0.0" y="66" width="500" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8uY-Kl-f3P" id="ViB-cT-3oR">
@@ -54,10 +52,10 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-W2-mmV">
-                                <rect key="frame" x="1354" y="754" width="476" height="266"/>
+                                <rect key="frame" x="1357" y="754" width="473" height="266"/>
                                 <subviews>
                                     <tvCaptionButtonView contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" contentText="BECOME PRO" title="315€" subtitle="PER YEAR" translatesAutoresizingMaskIntoConstraints="NO" id="Cev-ad-3eC">
-                                        <rect key="frame" x="76" y="0.0" width="400" height="150"/>
+                                        <rect key="frame" x="73" y="0.0" width="400" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="400" id="tmK-Wn-1XN"/>
                                         </constraints>
@@ -66,7 +64,7 @@
                                         </connections>
                                     </tvCaptionButtonView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gw8-g4-gj4">
-                                        <rect key="frame" x="0.0" y="180" width="476" height="86"/>
+                                        <rect key="frame" x="0.0" y="180" width="473" height="86"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="RESTORE PURCHASES"/>
                                         <connections>
@@ -76,10 +74,10 @@
                                 </subviews>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WIL-RO-EWd">
-                                <rect key="frame" x="1250" y="945" width="64" height="64"/>
+                                <rect key="frame" x="1253" y="945" width="64" height="64"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Txe-8I-7B3">
-                                <rect key="frame" x="90" y="249" width="1040" height="831"/>
+                                <rect key="frame" x="90" y="346" width="1040" height="734"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8ns-4X-YoR">
                                     <size key="itemSize" width="403" height="295"/>
@@ -117,28 +115,22 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o5G-Pb-NMM">
-                                <rect key="frame" x="90" y="110" width="93" height="89"/>
+                                <rect key="frame" x="90" y="207" width="92" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mD-Iz-06q">
-                                        <rect key="frame" x="0.0" y="0.0" width="93" height="46"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="92" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33s-cE-K3x">
-                                        <rect key="frame" x="0.0" y="54" width="70" height="35"/>
+                                        <rect key="frame" x="0.0" y="54" width="71" height="35"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <tvCaptionButtonView contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" contentText="Content Text" title="Title" translatesAutoresizingMaskIntoConstraints="NO" id="CU9-pv-7zm">
-                                <rect key="frame" x="223" y="94" width="156" height="122"/>
-                                <connections>
-                                    <action selector="actionBuyVisibleCategory:" destination="0xZ-7n-fy0" eventType="primaryActionTriggered" id="tzB-aL-O6o"/>
-                                </connections>
-                            </tvCaptionButtonView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bg3-8o-MdT">
                                 <rect key="frame" x="1326" y="797" width="64" height="64"/>
                             </activityIndicatorView>
@@ -152,11 +144,9 @@
                             <constraint firstAttribute="bottom" secondItem="Txe-8I-7B3" secondAttribute="bottom" id="Pes-jF-AYj"/>
                             <constraint firstItem="Cev-ad-3eC" firstAttribute="leading" secondItem="bg3-8o-MdT" secondAttribute="trailing" constant="40" id="XCn-Il-lMr"/>
                             <constraint firstItem="usl-BB-YxH" firstAttribute="top" secondItem="E32-E5-TmF" secondAttribute="bottom" constant="50" id="Z30-k1-teo"/>
-                            <constraint firstItem="CU9-pv-7zm" firstAttribute="leading" secondItem="o5G-Pb-NMM" secondAttribute="trailing" constant="40" id="Zee-Rf-VrA"/>
                             <constraint firstItem="bg3-8o-MdT" firstAttribute="centerY" secondItem="Cev-ad-3eC" secondAttribute="centerY" id="aaz-FI-OH7"/>
                             <constraint firstItem="CgZ-Ua-PXg" firstAttribute="top" secondItem="cs1-W2-mmV" secondAttribute="bottom" id="daF-Yl-xDG"/>
                             <constraint firstItem="Mbu-Vz-e5r" firstAttribute="trailing" secondItem="usl-BB-YxH" secondAttribute="trailing" id="hfG-Ly-PcW"/>
-                            <constraint firstItem="CU9-pv-7zm" firstAttribute="centerY" secondItem="o5G-Pb-NMM" secondAttribute="centerY" id="kEy-uZ-CeX"/>
                             <constraint firstItem="Txe-8I-7B3" firstAttribute="leading" secondItem="Mbu-Vz-e5r" secondAttribute="leading" id="uBD-VR-f9y"/>
                             <constraint firstItem="usl-BB-YxH" firstAttribute="leading" secondItem="Txe-8I-7B3" secondAttribute="trailing" constant="200" id="uJ1-vR-7Hc"/>
                             <constraint firstItem="cs1-W2-mmV" firstAttribute="trailing" secondItem="Mbu-Vz-e5r" secondAttribute="trailing" id="xle-Ab-fq4"/>
@@ -171,7 +161,6 @@
                         <outlet property="activityIndicatorViewRestore" destination="WIL-RO-EWd" id="aPy-yl-a1L"/>
                         <outlet property="buttonRestore" destination="Gw8-g4-gj4" id="izs-iD-VeR"/>
                         <outlet property="captionButtonViewBecomePro" destination="Cev-ad-3eC" id="TPi-bT-3pN"/>
-                        <outlet property="captionButtonViewVisibleCategoryBuy" destination="CU9-pv-7zm" id="gGc-kd-rtd"/>
                         <outlet property="collectionView" destination="Txe-8I-7B3" id="hwa-AA-l3K"/>
                         <outlet property="labelVisibleCategorySubtitle" destination="33s-cE-K3x" id="h9t-HC-bBR"/>
                         <outlet property="labelVisibleCategoryTitle" destination="6mD-Iz-06q" id="pjt-Tf-rfZ"/>

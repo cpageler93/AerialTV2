@@ -43,11 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         { _ in
             // check if we need to initialize the visible categories with all free categories
             if AerialSettings.shared.numberOfVisibleCategories() == 0 {
-                let mapper = AerialProductMapper()
-                let categoryProducts = mapper.map(categories: AerialCache.categories ?? [])
-                let categoriesWithoutProduct = categoryProducts.filter({ $0.product == nil })
-                for category in categoriesWithoutProduct {
-                    AerialSettings.shared.setVisible(true, category: category.category)
+                let categories = AerialCache.categories ?? []
+                let freeCategories = categories.filter({ !$0.info.isProContent })
+                for category in freeCategories {
+                    AerialSettings.shared.setVisible(true, category: category)
                 }
                 AerialSettings.shared.sendDidUpdateVisibilityNotification()
             }

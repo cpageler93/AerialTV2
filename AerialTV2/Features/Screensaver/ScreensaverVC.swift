@@ -47,8 +47,10 @@ class ScreensaverVC: UIViewController {
 
         playerController1?.player = nil
         playerController1?.view?.alpha = 0
+        playerController1?.videoGravity = .resizeAspectFill
         playerController2?.player = nil
         playerController2?.view?.alpha = 0
+        playerController2?.videoGravity = .resizeAspectFill
 
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureSwipeLeft))
         swipeLeftGesture.direction = .left

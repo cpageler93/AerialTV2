@@ -35,17 +35,15 @@ public class AerialQueue {
     }
 
     private func reloadData() {
-        let mapper = AerialProductMapper()
-        var availableCategoryProducts = mapper.map(categories: AerialCache.categories ?? [])
-        availableCategoryProducts = availableCategoryProducts.filter { categoryProduct in
-            let isVisible = AerialSettings.shared.isVisible(category: categoryProduct.category)
-            let isWithoutProduct = categoryProduct.product == nil
-            let isPurchased = AerialAppStoreIAP.shared.isPurchased(product: categoryProduct.product)
-            return isVisible && (isWithoutProduct || isPurchased)
+        let categories = AerialCache.categories ?? []
+        let availableCategories = categories.filter { category in
+            let isVisible = AerialSettings.shared.isVisible(category: category)
+            let isFree = !category.info.isProContent
+            let isUnlocked = AerialAppStoreIAP.shared.isPurchased(productIdentifier: category.info.productIdentifier)
+            return isVisible && (isFree || isUnlocked)
         }
-        let availableCagegories = availableCategoryProducts.compactMap({ $0.category })
 
-        allQueueableItems = availableCagegories.compactMap({ $0.videos }).reduce([], +)
+        allQueueableItems = availableCategories.compactMap({ $0.videos }).reduce([], +)
         if items.count == 0 {
             items = allQueueableItems.shuffled()
         }

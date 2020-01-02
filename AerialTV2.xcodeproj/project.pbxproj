@@ -19,7 +19,6 @@
 		5955C6B222C3BE98002C1DB4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6B122C3BE98002C1DB4 /* Collection.swift */; };
 		5955C6B522C3CA9C002C1DB4 /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5955C6B422C3CA9C002C1DB4 /* Categories.storyboard */; };
 		5955C6B722C3CAAA002C1DB4 /* CategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6B622C3CAAA002C1DB4 /* CategoriesVC.swift */; };
-		5955C6B922C3CC61002C1DB4 /* AerialProductMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6B822C3CC61002C1DB4 /* AerialProductMapper.swift */; };
 		5955C6BB22C3D41F002C1DB4 /* AerialSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BA22C3D41F002C1DB4 /* AerialSettings.swift */; };
 		5955C6BD22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BC22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift */; };
 		5955C6BF22C3DBD5002C1DB4 /* AerialImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */; };
@@ -50,7 +49,6 @@
 		5955C6B122C3BE98002C1DB4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		5955C6B422C3CA9C002C1DB4 /* Categories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		5955C6B622C3CAAA002C1DB4 /* CategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVC.swift; sourceTree = "<group>"; };
-		5955C6B822C3CC61002C1DB4 /* AerialProductMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialProductMapper.swift; sourceTree = "<group>"; };
 		5955C6BA22C3D41F002C1DB4 /* AerialSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialSettings.swift; sourceTree = "<group>"; };
 		5955C6BC22C3D97B002C1DB4 /* VideoPosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialImageProvider.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 				59C479F422C1E47A00DF0BA2 /* AerialCache.swift */,
 				59C479F622C1E9F100DF0BA2 /* AerialAppStoreIAP.swift */,
 				5955C6A922C3AE13002C1DB4 /* AerialQueue.swift */,
-				5955C6B822C3CC61002C1DB4 /* AerialProductMapper.swift */,
 				5955C6BA22C3D41F002C1DB4 /* AerialSettings.swift */,
 				5955C6BE22C3DBD5002C1DB4 /* AerialImageProvider.swift */,
 			);
@@ -286,7 +283,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5955C6B222C3BE98002C1DB4 /* Collection.swift in Sources */,
-				5955C6B922C3CC61002C1DB4 /* AerialProductMapper.swift in Sources */,
 				5955C6BB22C3D41F002C1DB4 /* AerialSettings.swift in Sources */,
 				59C479F722C1E9F100DF0BA2 /* AerialAppStoreIAP.swift in Sources */,
 				59C479DE22C123A000DF0BA2 /* AppDelegate.swift in Sources */,
@@ -457,7 +453,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 488D924Q6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -468,9 +466,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.pageler.christoph.aerialtv2;
+				PRODUCT_BUNDLE_IDENTIFIER = de.pageler.christoph.aerialtv3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "AerialTV 2 Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
@@ -481,8 +479,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 488D924Q6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,9 +492,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.pageler.christoph.aerialtv2;
+				PRODUCT_BUNDLE_IDENTIFIER = de.pageler.christoph.aerialtv3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "AerialTV 2 AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};

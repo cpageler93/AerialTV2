@@ -12,7 +12,7 @@ import Foundation
 
 public class AerialAPI {
 
-    public let contentURL = URL(string: "https://aerialtv.fra1.cdn.digitaloceanspaces.com/content.json")!
+    public let contentURL = URL(string: "https://raw.githubusercontent.com/cpageler93/aerialtv3-content/master/content.json")!
 
     public func getCategoriesFromContent(completion: @escaping ([Category]? ) -> Void) {
         getContent { content in
@@ -101,16 +101,22 @@ public extension AerialAPI {
 
             public let productIdentifier: String
             public let titles: [String: String]
+            public let isProContent: Bool
 
             enum CodingKeys: String, CodingKey {
                 case productIdentifier = "product_identifier"
                 case titles = "titles"
+                case isProContent = "is_pro_content"
             }
 
         }
 
         public let info: Info
         public let videos: [Video]
+
+        public func titleForCurrentLocale() -> String? {
+            return title(languageCode: Locale.current.languageCode ?? "en")
+        }
 
         public func title(languageCode: String) -> String? {
             if let requestedTitle = info.titles[languageCode] {
